@@ -1,0 +1,25 @@
+services:
+  jupyter-lab:
+    container_name: jupyter-lab
+    build:
+      context: .
+      target: jupyter-lab
+    environment:
+      - NB_UID=${UID:-999}
+      - NB_GID=${GID:-999}
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN}
+    volumes:
+      - ./notebooks:/app/notebooks:rw
+    ports:
+      - "8888:8888"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./pyproject.toml
+        - action: rebuild
+          path: ./uv.lock
+        - action: rebuild
+          path: ./Dockerfile
+        - action: rebuild
+          path: ./.env
+    restart: unless-stopped
