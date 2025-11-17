@@ -13,6 +13,6 @@ dependencies = [
     "scipy>=1.16.3",
     "sympy>=1.14.0",
     "jupyterlab-lsp>=5.2.0",
-    "pyright>=1.1.407",
+    # "pyright>=1.1.407",
     "python-lsp-server[all]>=1.13.1",
 ]
